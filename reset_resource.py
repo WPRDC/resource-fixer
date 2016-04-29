@@ -9,7 +9,7 @@ if(len(sys.argv) >= 3):
 else:
     print("needs to be python reset_resource.py <resource_id> <input_file.csv> [<server>]")
     exit(-1)
-if(len(sys.argv)==-4):
+if(len(sys.argv)== 4):
     server = sys.argv[3]
 else:
     server = "Staging"
@@ -33,11 +33,12 @@ i = 0
 with open(data_file) as f:
     dr = csv.DictReader(f)
     for row in dr:
+	
+		# FIX FIELD TYPES HERE
+		
+		data.append(row)
         i+=1
         if i % 1000 == 0:
             print(i)
-
-        if 'Reject to 311' not in row['REQUEST_TYPE']:
-            data.append(row)
 
 dp.upsert(resource_id, data, method='upsert')
