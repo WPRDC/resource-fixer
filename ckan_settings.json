@@ -1,0 +1,35 @@
+{
+  "Organization Keys": {
+    "Staging": {
+      "Allegheny County": "f6dcf8fb-2051-4226-8c74-de9fbc699684",
+      "City of Pittsburgh": "9ecaff80-fb4a-457b-8141-e53f7c991890"
+    },
+    "Live": {
+      "Allegheny County": "f6dcf8fb-2051-4226-8c74-de9fbc699684",
+      "City of Pittsburgh": "9ecaff80-fb4a-457b-8141-e53f7c991890"
+    },
+    "Development": {
+      "Allegheny County": "0459b2ac-a899-4d45-a66d-9464afc19264",
+      "City of Pittsburgh": "0459b2ac-a899-4d45-a66d-9464afc19264"
+    }
+  },
+  "API Keys": {
+    "Staging": "",
+    "Live": "",
+    "Development":""
+  },
+  "URLs": {
+    "Staging": {
+      "Dump": "https://stage.wprdc.org/datastore/dump/",
+      "CKAN": "https://stage.wprdc.org/api/3/"
+    },
+    "Live": {
+      "Dump": "https://data.wprdc.org/datastore/dump/",
+      "CKAN": "https://data.wprdc.org/api/3/"
+    },
+    "Development":{
+      "Dump": "http://localhost:5000/datastore/dump/",
+      "CKAN": "http://localhost:5000/api/3/"
+    }
+  }
+}
