@@ -1,0 +1,50 @@
+[
+  {
+    "type": "int",
+    "id": "REQUEST_ID"
+  },
+  {
+    "type": "text",
+    "id": "CREATED_ON"
+  },
+  {
+    "type": "text",
+    "id": "REQUEST_TYPE"
+  },
+  {
+    "type": "text",
+    "id": "REQUEST_ORIGIN"
+  },
+  {
+    "type": "text",
+    "id": "DEPARTMENT"
+  },
+  {
+    "type": "text",
+    "id": "NEIGHBORHOOD"
+  },
+  {
+    "type": "text",
+    "id": "COUNCIL_DISTRICT"
+  },
+  {
+    "type": "text",
+    "id": "WARD"
+  },
+  {
+    "type": "text",
+    "id": "TRACT"
+  },
+  {
+    "type": "text",
+    "id": "PUBLIC_WORKS_DIVISION"
+  },
+  {
+    "type": "text",
+    "id": "PLI_DIVISION"
+  },
+  {
+    "type": "text",
+    "id": "POLICE_ZONE"
+  }
+]
