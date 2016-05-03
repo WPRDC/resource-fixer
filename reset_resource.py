@@ -115,5 +115,8 @@ with open(data_file) as f:
 
 if modify_datastore:
     r = dp.upsert(resource_id, data, method='upsert')
+    if r.status_code != 200:
+        print(r.text)
+    else:
+        print("Data successfully stored.")
     print("Status code: %d" % r.status_code)
-    print(r.text)
