@@ -40,9 +40,6 @@ if modify_datastore:
     # Delete datastore
     dp.delete_datastore(resource_id)
 
-    # Create Datastore
-    dp.create_datastore(resource_id, fields, keys='CRASH_CRN')
-
 field_mapper = {}
 
 # Pre-load some mappings for columns that come up in Crash Data
@@ -72,8 +69,20 @@ field_mapper["WORK_ZONE_IND"] = "text" # example value: 'N'
 
 # [ ] Write a function to check that assumed values are correct.
 
+# Add the new fields to the fields list obtained from
+# the data dictionary.
+data_dictionary_ids = [d.keys()[0] for d in fields]
+for new_id in field_mapper.keys():
+    if new_id not in data_dictionary_ids:
+        fields.append({"id": new_id, "type": field_mapper[new_id]})
+
+# Add all fields to field_mapper.
 for field in fields:
     field_mapper[field["id"]] = field["type"]
+
+if modify_datastore:
+    # Create Datastore
+    dp.create_datastore(resource_id, fields, keys='CRASH_CRN')
 
 data = []
 i = 0
@@ -85,15 +94,6 @@ with open(data_file) as f:
         # and values equal to the corresponding values of those parameters.
         # FIX FIELD TYPES HERE
         for column in row.keys():
-#            print(column,row[column])
-
-            #if column == 'SPEC_JURIS_CD' and row[column] != '':
-            #    print("SPEC_JURIS_CD: %s" % row[column])
-            # In the 2009 file, the SPEC_JURIS_CD column (which represents
-            # whether the crash occurred in a special jurisdiction is mostly empty.
-            # Occasionally, it has the value "0" (which means that the jurisdiction
-            # is not special, as indicated in the data dictionary.)
-
             if column not in field_mapper.keys():
                 print("column = %s" % (column))
                 raise ValueError('A field without a recognized type was found.')
@@ -107,11 +107,11 @@ with open(data_file) as f:
                 row[column] = str(row[column])
             else:
                 raise ValueError('A field without a recognized type was found.')
-        #break
         data.append(row)
         i += 1
         if i % 250 == 0:
             print(i)
+
 
 if modify_datastore:
     r = dp.upsert(resource_id, data, method='upsert')
