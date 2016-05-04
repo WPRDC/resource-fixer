@@ -2,6 +2,8 @@ from datapusher import Datapusher
 import json
 import csv
 import sys
+import re
+from collections import OrderedDict
 
 def type_or_none(convert_to,s):
     if s == '':
@@ -66,23 +68,34 @@ field_mapper["HIT_PARKED_VEHICLE"] = "int"
 field_mapper["TOTAL_UNITS"] = "int"
 field_mapper["WORK_ZONE_IND"] = "text" # example value: 'N'
 
+# Obtain the headings from the CSV file and use their order to
+# maintain consistency with the other uploaded resources that
+# do not need to be repaired with this script.
+d_fi = open(data_file,'r')
+original_headings = re.sub(r'[\r\n]*','',d_fi.readline())
+original_order = original_headings.split(',')
+d_fi.close()
 
 # [ ] Write a function to check that assumed values are correct.
-
-# Add the new fields to the fields list obtained from
-# the data dictionary.
-data_dictionary_ids = [d.keys()[0] for d in fields]
-for new_id in field_mapper.keys():
-    if new_id not in data_dictionary_ids:
-        fields.append({"id": new_id, "type": field_mapper[new_id]})
 
 # Add all fields to field_mapper.
 for field in fields:
     field_mapper[field["id"]] = field["type"]
 
+reordered_fields = []
+for heading in original_order:
+    reordered_fields.append({"id": heading, "type": field_mapper[heading]})
+
+# # Add the new fields to the fields list obtained from
+# # the data dictionary.
+# data_dictionary_ids = [d.keys()[0] for d in fields]
+# for new_id in field_mapper.keys():
+#     if new_id not in data_dictionary_ids:
+#         fields.append({"id": new_id, "type": field_mapper[new_id]})
+
 if modify_datastore:
     # Create Datastore
-    dp.create_datastore(resource_id, fields, keys='CRASH_CRN')
+    dp.create_datastore(resource_id, reordered_fields, keys='CRASH_CRN')
 
 data = []
 i = 0
@@ -107,7 +120,8 @@ with open(data_file) as f:
                 row[column] = str(row[column])
             else:
                 raise ValueError('A field without a recognized type was found.')
-        data.append(row)
+        reordered_row = OrderedDict([(fi['id'],row[fi['id']]) for fi in reordered_fields])
+        data.append(reordered_row)
         i += 1
         if i % 250 == 0:
             print(i)
