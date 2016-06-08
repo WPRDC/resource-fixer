@@ -69,10 +69,10 @@ class Datapusher:
         resource = json.loads(create_resource.text)
 
         if not resource['success']:
-            print "ERROR: " + resource['error']['name'][0]
+            print("ERROR: " + resource['error']['name'][0])
             return
 
-        print "SUCCESS: Resource #" + resource['result']['id'] + ' was created.'
+        print("SUCCESS: Resource #" + resource['result']['id'] + ' was created.')
         return resource['result']['id']
 
     def create_datastore(self, resource, fields, keys=None):
@@ -101,9 +101,9 @@ class Datapusher:
         datastore = json.loads(datastore_creation.text)
 
         if not datastore['success']:
-            print "ERROR: " + datastore['error']['name'][0]
+            print("ERROR: " + datastore['error']['name'][0])
             return
-        print "SUCCESS: Datastore #" + datastore['result']['resource_id'] + ' was created.'
+        print("SUCCESS: Datastore #" + datastore['result']['resource_id'] + ' was created.')
         return datastore['result']
 
     def delete_datastore(self, resource):

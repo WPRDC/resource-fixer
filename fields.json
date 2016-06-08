@@ -1,706 +1,98 @@
 [
-    {
-        "id": "ACCESS_CTRL", 
-        "type": "text"
-    }, 
-    {
-        "id": "ADJ_RDWY_SEQ", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "AGGRESSIVE_DRIVING", 
-        "type": "int"
-    }, 
-    {
-        "id": "ALCOHOL_RELATED", 
-        "type": "int"
-    }, 
-    {
-        "id": "AUTOMOBILE_COUNT", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "BELTED_DEATH_COUNT", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "BELTED_MAJ_INJ_COUNT", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "BICYCLE", 
-        "type": "int"
-    }, 
-    {
-        "id": "BICYCLE_COUNT", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "BICYCLE_DEATH_COUNT", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "BICYCLE_MAJ_INJ_COUNT", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "BUS_COUNT", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "CELL_PHONE", 
-        "type": "int"
-    }, 
-    {
-        "id": "COLLISION_TYPE", 
-        "type": "text"
-    }, 
-    {
-        "id": "COMM_VEH_COUNT", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "COMM_VEHICLE", 
-        "type": "int"
-    }, 
-    {
-        "id": "CONS_ZONE_SPD_LIM", 
-        "type": "text"
-    }, 
-    {
-        "id": "COUNTY", 
-        "type": "text"
-    }, 
-    {
-        "id": "CRASH_CRN", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "CRASH_MONTH", 
-        "type": "text"
-    }, 
-    {
-        "id": "CRASH_YEAR", 
-        "type": "text"
-    }, 
-    {
-        "id": "CRN", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "CROSS_MEDIAN", 
-        "type": "int"
-    }, 
-    {
-        "id": "CURVE_DVR_ERROR", 
-        "type": "int"
-    }, 
-    {
-        "id": "CURVED_ROAD", 
-        "type": "int"
-    }, 
-    {
-        "id": "DAY_OF_WEEK", 
-        "type": "text"
-    }, 
-    {
-        "id": "DEC_LAT", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "DEC_LONG", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "DEER_RELATED", 
-        "type": "int"
-    }, 
-    {
-        "id": "DISTRACTED", 
-        "type": "int"
-    }, 
-    {
-        "id": "DISTRICT", 
-        "type": "text"
-    }, 
-    {
-        "id": "DRINKING_DRIVER", 
-        "type": "int"
-    }, 
-    {
-        "id": "DRIVER_16YR", 
-        "type": "int"
-    }, 
-    {
-        "id": "DRIVER_17YR", 
-        "type": "int"
-    }, 
-    {
-        "id": "DRIVER_65_74YR", 
-        "type": "int"
-    }, 
-    {
-        "id": "DRIVER_75PLUS", 
-        "type": "int"
-    }, 
-    {
-        "id": "DRIVER_COUNT_16YR", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "DRIVER_COUNT_17YR", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "DRIVER_COUNT_65_74YR", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "DRIVER_COUNT_75PLUS", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "FATAL", 
-        "type": "int"
-    }, 
-    {
-        "id": "FATAL_COUNT", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "FATAL_OR_MAJ_INJ", 
-        "type": "int"
-    }, 
-    {
-        "id": "FATIGUE_ASLEEP", 
-        "type": "int"
-    }, 
-    {
-        "id": "FIRE_IN_VEHICLE", 
-        "type": "int"
-    }, 
-    {
-        "id": "FLAG_CRN", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "HAZARDOUS_TRUCK", 
-        "type": "int"
-    }, 
-    {
-        "id": "HEAVY_TRUCK_COUNT", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "HIT_BARRIER", 
-        "type": "int"
-    }, 
-    {
-        "id": "HIT_BRIDGE", 
-        "type": "int"
-    }, 
-    {
-        "id": "HIT_DEER", 
-        "type": "int"
-    }, 
-    {
-        "id": "HIT_EMBANKMENT", 
-        "type": "int"
-    }, 
-    {
-        "id": "HIT_FIXED_OBJECT", 
-        "type": "int"
-    }, 
-    {
-        "id": "HIT_GDRAIL", 
-        "type": "int"
-    }, 
-    {
-        "id": "HIT_GDRAIL_END", 
-        "type": "int"
-    }, 
-    {
-        "id": "HIT_POLE", 
-        "type": "int"
-    }, 
-    {
-        "id": "HIT_TREE_SHRUB", 
-        "type": "int"
-    }, 
-    {
-        "id": "HO_OPPDIR_SDSWP", 
-        "type": "int"
-    }, 
-    {
-        "id": "HOUR_OF_DAY", 
-        "type": "text"
-    }, 
-    {
-        "id": "HVY_TRUCK_RELATED", 
-        "type": "int"
-    }, 
-    {
-        "id": "ICY_ROAD", 
-        "type": "int"
-    }, 
-    {
-        "id": "ILLEGAL_DRUG_RELATED", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "ILLUMINATION", 
-        "type": "text"
-    }, 
-    {
-        "id": "ILLUMINATION_DARK", 
-        "type": "int"
-    }, 
-    {
-        "id": "IMPAIRED_DRIVER", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "INJURY", 
-        "type": "int"
-    }, 
-    {
-        "id": "INJURY_COUNT", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "INJURY_OR_FATAL", 
-        "type": "int"
-    }, 
-    {
-        "id": "INTERSECT_TYPE", 
-        "type": "text"
-    }, 
-    {
-        "id": "INTERSECTION", 
-        "type": "int"
-    }, 
-    {
-        "id": "INTERSTATE", 
-        "type": "int"
-    }, 
-    {
-        "id": "LANE_CLOSED", 
-        "type": "text"
-    }, 
-    {
-        "id": "LN_CLOSE_DIR", 
-        "type": "text"
-    }, 
-    {
-        "id": "LANE_COUNT", 
-        "type": "text"
-    }, 
-    {
-        "id": "LATITUDE", 
-        "type": "text"
-    }, 
-    {
-        "id": "LIMIT_65MPH", 
-        "type": "int"
-    }, 
-    {
-        "id": "LOCAL_ROAD", 
-        "type": "int"
-    }, 
-    {
-        "id": "LOCAL_ROAD_ONLY", 
-        "type": "int"
-    }, 
-    {
-        "id": "LOCATION_TYPE", 
-        "type": "text"
-    }, 
-    {
-        "id": "LONGITUDE", 
-        "type": "text"
-    }, 
-    {
-        "id": "MAJ_INJ_COUNT", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "MAJOR_INJURY", 
-        "type": "int"
-    }, 
-    {
-        "id": "MAX_SEVERITY_LEVEL", 
-        "type": "text"
-    }, 
-    {
-        "id": "MC_DRINKING_DRIVER", 
-        "type": "int"
-    }, 
-    {
-        "id": "MCYCLE_DEATH_COUNT", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "MCYCLE_MAJ_INJ_COUNT", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "MIN_INJ_COUNT", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "MINOR_INJURY", 
-        "type": "int"
-    }, 
-    {
-        "id": "MOD_INJ_COUNT", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "MODERATE_INJURY", 
-        "type": "int"
-    }, 
-    {
-        "id": "MOTORCYCLE", 
-        "type": "int"
-    }, 
-    {
-        "id": "MOTORCYCLE_COUNT", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "MUNICIPALITY", 
-        "type": "text"
-    }, 
-    {
-        "id": "NHTSA_AGG_DRIVING", 
-        "type": "int"
-    }, 
-    {
-        "id": "NO_CLEARANCE", 
-        "type": "int"
-    }, 
-    {
-        "id": "NON_INTERSECTION", 
-        "type": "int"
-    }, 
-    {
-        "id": "NTFY_HIWY_MAINT", 
-        "type": "text"
-    }, 
-    {
-        "id": "OFFSET", 
-        "type": "text"
-    }, 
-    {
-        "id": "OVERTURNED", 
-        "type": "int"
-    }, 
-    {
-        "id": "PED_COUNT", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "PED_DEATH_COUNT", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "PED_MAJ_INJ_COUNT", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "PEDESTRIAN", 
-        "type": "int"
-    }, 
-    {
-        "id": "PERSON_COUNT", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "PHANTOM_VEHICLE", 
-        "type": "int"
-    }, 
-    {
-        "id": "POLICE_AGCY", 
-        "type": "text"
-    }, 
-    {
-        "id": "PROPERTY_DAMAGE_ONLY", 
-        "type": "int"
-    }, 
-    {
-        "id": "PSP_REPORTED", 
-        "type": "int"
-    }, 
-    {
-        "id": "RDWY_ORIENT", 
-        "type": "text"
-    }, 
-    {
-        "id": "RDWY_SEQ_NUM", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "RDWY_SURF_TYPE_CD", 
-        "type": "text"
-    }, 
-    {
-        "id": "REAR_END", 
-        "type": "int"
-    }, 
-    {
-        "id": "RELATION_TO_ROAD", 
-        "type": "text"
-    }, 
-    {
-        "id": "ROAD_CONDITION", 
-        "type": "text"
-    }, 
-    {
-        "id": "ROAD_OWNER", 
-        "type": "text"
-    }, 
-    {
-        "id": "ROADWAY_COUNTY", 
-        "type": "text"
-    }, 
-    {
-        "id": "ROADWAY_CRN", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "ROUTE", 
-        "type": "text"
-    }, 
-    {
-        "id": "RUNNING_RED_LT", 
-        "type": "int"
-    }, 
-    {
-        "id": "RUNNING_STOP_SIGN", 
-        "type": "int"
-    }, 
-    {
-        "id": "SCH_BUS_IND", 
-        "type": "text"
-    }, 
-    {
-        "id": "SCH_ZONE_IND", 
-        "type": "text"
-    }, 
-    {
-        "id": "SCHOOL_BUS", 
-        "type": "int"
-    }, 
-    {
-        "id": "SCHOOL_ZONE", 
-        "type": "int"
-    }, 
-    {
-        "id": "SEGMENT", 
-        "type": "text"
-    }, 
-    {
-        "id": "SHLDR_RELATED", 
-        "type": "int"
-    }, 
-    {
-        "id": "SIGNALIZED_INT", 
-        "type": "int"
-    }, 
-    {
-        "id": "SMALL_TRUCK_COUNT", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "SNOW_SLUSH_ROAD", 
-        "type": "int"
-    }, 
-    {
-        "id": "SPEC_JURIS_CD", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "SPEED_LIMIT", 
-        "type": "text"
-    }, 
-    {
-        "id": "SPEEDING", 
-        "type": "int"
-    }, 
-    {
-        "id": "SPEEDING_RELATED", 
-        "type": "int"
-    }, 
-    {
-        "id": "STATE_ROAD", 
-        "type": "int"
-    }, 
-    {
-        "id": "STOP_CONTROLLED_INT", 
-        "type": "int"
-    }, 
-    {
-        "id": "STREET_NAME", 
-        "type": "text"
-    }, 
-    {
-        "id": "SUDDEN_DEER", 
-        "type": "int"
-    }, 
-    {
-        "id": "SUV_COUNT", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "SV_RUN_OFF_RD", 
-        "type": "int"
-    }, 
-    {
-        "id": "TAILGATING", 
-        "type": "int"
-    }, 
-    {
-        "id": "TCD_FUNC_CD", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "TCD_TYPE", 
-        "type": "text"
-    }, 
-    {
-        "id": "TFC_DETOUR_IND", 
-        "type": "text"
-    }, 
-    {
-        "id": "TIME_OF_DAY", 
-        "type": "text"
-    }, 
-    {
-        "id": "TRAIN", 
-        "type": "int"
-    }, 
-    {
-        "id": "TRAIN_TROLLEY", 
-        "type": "int"
-    }, 
-    {
-        "id": "TROLLEY", 
-        "type": "int"
-    }, 
-    {
-        "id": "TURNPIKE", 
-        "type": "int"
-    }, 
-    {
-        "id": "UNB_DEATH_COUNT", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "UNB_MAJ_INJ_COUNT", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "UNBELTED", 
-        "type": "int"
-    }, 
-    {
-        "id": "UNBELTED_OCC_COUNT", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "UNDERAGE_DRNK_DRV", 
-        "type": "int"
-    }, 
-    {
-        "id": "UNK_INJ_DEG_COUNT", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "UNK_INJ_PER_COUNT", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "UNLICENSED", 
-        "type": "int"
-    }, 
-    {
-        "id": "UNSIGNALIZED_INT", 
-        "type": "int"
-    }, 
-    {
-        "id": "URBAN_RURAL", 
-        "type": "text"
-    }, 
-    {
-        "id": "VAN_COUNT", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "VEHICLE_COUNT", 
-        "type": "numeric"
-    }, 
-    {
-        "id": "VEHICLE_FAILURE", 
-        "type": "int"
-    }, 
-    {
-        "id": "VEHICLE_TOWED", 
-        "type": "int"
-    }, 
-    {
-        "id": "WEATHER", 
-        "type": "text"
-    }, 
-    {
-        "id": "WET_ROAD", 
-        "type": "int"
-    }, 
-    {
-        "id": "WORK_ZONE", 
-        "type": "int"
-    }, 
-    {
-        "id": "WK_ZONE_IND", 
-        "type": "text"
-    }, 
-    {
-        "id": "WORK_ZONE_LOC", 
-        "type": "text"
-    }, 
-    {
-        "id": "WORK_ZONE_TYPE", 
-        "type": "text"
-    }, 
-    {
-        "id": "WORKERS_PRES", 
-        "type": "text"
-    }, 
-    {
-        "id": "WZ_CLOSE_DETOUR", 
-        "type": "text"
-    }, 
-    {
-        "id": "WZ_FLAGGER", 
-        "type": "text"
-    }, 
-    {
-        "id": "WZ_LAW_OFFCR_IND", 
-        "type": "text"
-    }, 
-    {
-        "id": "WZ_LN_CLOSURE", 
-        "type": "text"
-    }, 
-    {
-        "id": "WZ_MOVING", 
-        "type": "text"
-    }, 
-    {
-        "id": "WZ_OTHER", 
-        "type": "text"
-    }, 
-    {
-        "id": "WZ_SHLDER_MDN", 
-        "type": "text"
-    }
+  {
+    "id": "Name",
+    "type": "text"
+  },
+  {
+    "id": "Address",
+    "type": "text"
+  },
+  {
+    "id": "City",
+    "type": "text"
+  },
+  {
+    "id": "State",
+    "type": "text"
+  },
+  {
+    "id": "Zip4",
+    "type": "text"
+  },
+  {
+    "id": "County",
+    "type": "text"
+  },
+  {
+    "id": "Phone",
+    "type": "text"
+  },
+  {
+    "id": "SqFt",
+    "type": "numeric"
+  },
+  {
+    "id": "MoOpen",
+    "type": "time"
+  },
+  {
+    "id": "MoClose",
+    "type": "time"
+  },
+  {
+    "id": "TuOpen",
+    "type": "time"
+  },
+  {
+    "id": "TuClose",
+    "type": "time"
+  },
+  {
+    "id": "WeOpen",
+    "type": "time"
+  },
+  {
+    "id": "WeClose",
+    "type": "time"
+  },
+  {
+    "id": "ThOpen",
+    "type": "time"
+  },
+  {
+    "id": "ThClose",
+    "type": "time"
+  },
+  {
+    "id": "FrOpen",
+    "type": "time"
+  },
+  {
+    "id": "FrClose",
+    "type": "time"
+  },
+  {
+    "id": "SaOpen",
+    "type": "time"
+  },
+  {
+    "id": "SaClose",
+    "type": "time"
+  },
+  {
+    "id": "SuOpen",
+    "type": "time"
+  },
+  {
+    "id": "SuClose",
+    "type": "time"
+  },
+  {
+    "id": "Lat",
+    "type": "numeric"
+  },
+  {
+    "id": "Lon",
+    "type": "numeric"
+  }
 ]

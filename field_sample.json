@@ -1,0 +1,14 @@
+[
+    {
+        "id": "FIELD_NAME_WITH_TYPE_STRING",
+        "type": "text"
+    }, 
+    {
+        "id": "SOME_NUMBER_FIELD",
+        "type": "numeric"
+    }, 
+    {
+        "id": "AN_INTEGER_FIELD",
+        "type": "int"
+    }
+]
