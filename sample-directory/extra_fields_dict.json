@@ -1,0 +1,17 @@
+{
+    "CRASH_COUNTY": "text", 
+    "DRIVER_18YR": "int", 
+    "DRIVER_19YR": "int", 
+    "DRIVER_20YR": "int", 
+    "DRIVER_50_64YR": "int", 
+    "DRIVER_COUNT_18YR": "int", 
+    "DRIVER_COUNT_19YR": "int", 
+    "DRIVER_COUNT_20YR": "int", 
+    "DRIVER_COUNT_50_64YR": "int", 
+    "DRUGGED_DRIVER": "int", 
+    "DRUG_RELATED": "int", 
+    "EST_HRS_CLOSED": "int", 
+    "HIT_PARKED_VEHICLE": "int", 
+    "TOTAL_UNITS": "int", 
+    "WORK_ZONE_IND": "text"
+}
