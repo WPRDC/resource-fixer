@@ -4,6 +4,21 @@ import csv
 import sys
 import re
 from collections import OrderedDict
+from datetime import datetime
+#import ftfy
+#import codecs
+
+upload_in_chunks = True
+
+def upsert_data(resource_id,data):
+    if modify_datastore:
+    #    r = dp.upsert(resource_id, ftfy.fix_text(data), method='upsert')
+        r = dp.upsert(resource_id, data, method='upsert')
+        if r.status_code != 200:
+            print(r.text)
+        else:
+            print("Data successfully stored.")
+        print("Status code: %d" % r.status_code)
 
 def type_or_none(convert_to,s):
     if s == '':
@@ -16,21 +31,37 @@ def type_or_none(convert_to,s):
     else:
         return typed
 
+def preload_field_mapper(wd):
+    # This function takes the given working directory, finds the
+    # 'extra_fields.json' file, and uses the encoded dict as a
+    # supplemental data dictionary, which it returns to seed
+    # field_mapper.
+
+    field_mapper = {}
+    with open(wd+'/extra_fields_dict.json') as f:
+        extra_fields_dict = json.load(f)
+    for field in extra_fields_dict.keys():
+        field_mapper[field] = extra_fields_dict[field]
+    return field_mapper
 
 modify_datastore = True
 
-if(len(sys.argv) >= 3):
+if(len(sys.argv) >= 4):
     resource_id = sys.argv[1]
     data_file = sys.argv[2]
+    supplied_key = sys.argv[3]
 else:
-    print("needs to be python reset_resource.py <resource_id> <input_file.csv> [<server>]")
+    print("needs to be python reset_resource.py <resource_id> <input_file.csv> <supplied_key> [<server>]")
     exit(-1)
-if(len(sys.argv)== 4):
-    server = sys.argv[3]
+if(len(sys.argv)== 5):
+    server = sys.argv[4]
 else:
     server = "Staging"
 
-with open('fields.json') as f:
+# The 'fields.json' file should be in the same directory as the input data file.
+wd = '/'.join(data_file.split('/')[:-1]) # The working directory
+fields_file = wd+'/fields.json'
+with open(fields_file) as f:
     fields = json.load(f)
 
 with open('ckan_settings.json') as f:
@@ -42,36 +73,13 @@ if modify_datastore:
     # Delete datastore
     dp.delete_datastore(resource_id)
 
-field_mapper = {}
-
-# Pre-load some mappings for columns that come up in Crash Data
-# datasets but do _not_ appear in the data dictionary.
-# These can be overwritten if there do happen to be definitions
-# in fields.json.
-field_mapper["CRASH_COUNTY"] = "text" # example value: '02'
-field_mapper["DRIVER_18YR"] = "int"
-field_mapper["DRIVER_19YR"] = "int"
-field_mapper["DRIVER_20YR"] = "int"
-field_mapper["DRIVER_50_64YR"] = "int"
-field_mapper["DRIVER_COUNT_18YR"] = "int"
-field_mapper["DRIVER_COUNT_19YR"] = "int"
-field_mapper["DRIVER_COUNT_20YR"] = "int"
-field_mapper["DRIVER_COUNT_50_64YR"] = "int"
-field_mapper["DRUG_RELATED"] = "int" # PRESUMED
-#(even though ILLEGAL_DRUG_RELATED is "numeric")
-
-field_mapper["DRUGGED_DRIVER"] = "int"
-# This is being PRESUMED to be a Boolean.
-
-field_mapper["EST_HRS_CLOSED"] = "int" # example value: '3'
-field_mapper["HIT_PARKED_VEHICLE"] = "int"
-field_mapper["TOTAL_UNITS"] = "int"
-field_mapper["WORK_ZONE_IND"] = "text" # example value: 'N'
+field_mapper = preload_field_mapper(wd)
 
 # Obtain the headings from the CSV file and use their order to
 # maintain consistency with the other uploaded resources that
 # do not need to be repaired with this script.
 d_fi = open(data_file,'r')
+#d_fi = codecs.open(data_file,'r',encoding='UTF-8')
 original_headings = re.sub(r'[\r\n]*','',d_fi.readline())
 original_order = original_headings.split(',')
 d_fi.close()
@@ -95,7 +103,11 @@ for heading in original_order:
 
 if modify_datastore:
     # Create Datastore
-    dp.create_datastore(resource_id, reordered_fields, keys='CRASH_CRN')
+    #dp.create_datastore(resource_id, reordered_fields, keys='CRASH_CRN')
+    if supplied_key in ['NONE','None','none']:
+        dp.create_datastore(resource_id, reordered_fields)
+    else:
+        dp.create_datastore(resource_id, reordered_fields, keys=supplied_key)
 
 data = []
 i = 0
@@ -115,22 +127,25 @@ with open(data_file) as f:
             if field_mapper[column] == "numeric":
                 row[column] = type_or_none(float,row[column])
             elif field_mapper[column] == "int":
+                if column in ['OwnerZip'] and len(row[column]) > 5:
+                    print(row)
+                    row[column] = row[column][:5] # Truncate ZIP+4 codes to 5 digits.
                 row[column] = type_or_none(int,row[column])
             elif field_mapper[column] == "text":
                 row[column] = str(row[column])
+            elif field_mapper[column] == "timestamp":
+#                row[column] = datetime.strptime(row[column], "%Y-%m-%dT%H:%M:%S")
+                row[column] = row[column]
             else:
                 raise ValueError('A field without a recognized type was found.')
         reordered_row = OrderedDict([(fi['id'],row[fi['id']]) for fi in reordered_fields])
         data.append(reordered_row)
         i += 1
-        if i % 250 == 0:
+        if i % 5000 == 0:
+            if upload_in_chunks:
+                if i > 0:
+                    upsert_data(resource_id,data)
+                data = []
             print(i)
 
-
-if modify_datastore:
-    r = dp.upsert(resource_id, data, method='upsert')
-    if r.status_code != 200:
-        print(r.text)
-    else:
-        print("Data successfully stored.")
-    print("Status code: %d" % r.status_code)
+upsert_data(resource_id,data)
